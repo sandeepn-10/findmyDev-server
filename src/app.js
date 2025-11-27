@@ -6,8 +6,20 @@ app.listen(3000,()=>{
 })
 
 //request handlers
-app.use('/test',(req,res)=>{
+app.get('/test',(req,res)=>{
     res.send('Hello World test')
+})
+
+app.post('/test',(req,res)=>{
+    res.send('post test')
+})
+
+app.delete('/test',(req,res)=>{
+    res.send('delete test')
+})
+
+app.patch('/test',(req,res)=>{
+    res.send('patch test')
 })
 
 app.use('/',(req,res)=>{
