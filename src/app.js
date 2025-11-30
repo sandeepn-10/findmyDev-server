@@ -1,27 +1,22 @@
-const express = require('express')
-const app = express()
+const express = require("express");
+const app = express();
 
-app.listen(3000,()=>{
-    console.log('Server is running on port 3000')
+
+const authentation = (req,res,next)=>{
+    console.log("authentation called")
+    next()
+}
+
+const fileHandler = (req,res,next)=>{
+    console.log("fileHandler called")
+    next()
+}
+
+app.get("/user",authentation,fileHandler,(req,res)=>{
+    console.log("user details")
+    res.send("users...")
 })
 
-//request handlers
-app.get('/test',(req,res)=>{
-    res.send('Hello World test')
-})
-
-app.post('/test',(req,res)=>{
-    res.send('post test')
-})
-
-app.delete('/test',(req,res)=>{
-    res.send('delete test')
-})
-
-app.patch('/test',(req,res)=>{
-    res.send('patch test')
-})
-
-app.use('/',(req,res)=>{
-    res.send('Hello World')
-})
+app.listen(3000, () => {
+  console.log("Server is running on port 3000");
+});
